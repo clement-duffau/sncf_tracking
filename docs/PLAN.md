@@ -10,7 +10,7 @@ calculés sur les données du 5 novembre 2026.
 ### Mise en œuvre de l'étape 1 : précisions et écarts
 
 - **Gares** : aucune correspondance automatique approximative en production. Seules l'égalité des noms normalisés,
-  `pipeline/refs/gares_alias.csv` (18 libellés relus) et `gares_etrangeres.csv` (8) sont utilisées ; un libellé
+  `pipeline/refs/gares_alias.csv` (21 libellés relus) et `gares_etrangeres.csv` (8) sont utilisées ; un libellé
   inconnu fait échouer le build avec des candidats suggérés.
 - **Paris-Vaugirard** reste une gare distincte (même code UIC que Montparnasse, mais ses 622 trains de 2018 vers
   Bordeaux s'ajoutaient à ceux de Montparnasse, qui ne les a pas absorbés en 2019 : fusionner créerait une marche).
