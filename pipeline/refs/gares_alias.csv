@@ -1,0 +1,23 @@
+libelle,gare_referentiel,nom_affiche,precision,note
+PARIS LYON,Paris Gare de Lyon,,gare,
+PARIS NORD,Paris Gare du Nord,,gare,
+PARIS-NORD,Paris Gare du Nord,,gare,
+PARIS-BERCY,Paris Bercy Bourgogne - Pays d'Auvergne,Paris Bercy,gare,
+PARIS VAUGIRARD,Paris Montparnasse,Paris Vaugirard,gare,"Code UIC 87391102, rattaché à Paris Montparnasse dans le référentiel ; gardée distincte (trains en plus de Montparnasse en 2018)"
+PARIS-VAUGIRARD,Paris Montparnasse,Paris Vaugirard,gare,Idem
+MARNE LA VALLEE,Marne-la-Vallée Chessy,,gare,
+LE CREUSOT MONTCEAU MONTCHANIN,Le Creusot - Montceau-les-Mines - Montchanin TGV,Le Creusot TGV,gare,
+MACON LOCHE,Mâcon Loché TGV,,gare,
+BELLEGARDE (AIN),Bellegarde-sur-Valserine,,gare,
+VALENCE ALIXAN TGV,Valence TGV Rhône-Alpes Sud,Valence TGV,gare,"Liste des gares SNCF Réseau : Valence-TGV, commune d'Alixan, UIC 87763029"
+LILLE,Lille Flandres,Lille,ville,"Ambigu (Lille Flandres ou Lille Europe) : coordonnées de Lille Flandres, affiché « Lille »"
+MONTPELLIER,Montpellier Saint-Roch,Montpellier,ville,"Ambigu (Saint-Roch ou Sud de France)"
+LYON,Lyon Part Dieu,Lyon,ville,"Intercités depuis 2018 : la gare lyonnaise n'est pas précisée"
+BOULOGNE-VILLE,Boulogne-sur-Mer,,gare,
+BRIVE,Brive-la-Gaillarde,,gare,
+CHERBOURG,Cherbourg-en-Cotentin,,gare,
+LATOUR-DE-CAROL,Latour-de-Carol - Enveitg,Latour-de-Carol,gare,
+LIMOGES,Limoges Bénédictins,,gare,
+ROUEN,Rouen Rive Droite,,gare,"Libellé Intercités jusqu'en juin 2016, puis ROUEN-RIVE-DROITE"
+ST-GERVAIS,Saint-Gervais-les-Bains Le Fayet,Saint-Gervais-les-Bains,gare,
+TOULOUSE,Toulouse Matabiau,,gare,

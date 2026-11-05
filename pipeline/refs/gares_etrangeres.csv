@@ -1,0 +1,9 @@
+libelle,nom_affiche,pays,lat,lon,note
+BARCELONA,Barcelone,Espagne,41.3790,2.1400,Coordonnées approximatives (Barcelona Sants)
+MADRID,Madrid,Espagne,40.4065,-3.6895,Coordonnées approximatives (Madrid Puerta de Atocha)
+FRANCFORT,Francfort,Allemagne,50.1070,8.6630,Coordonnées approximatives (Frankfurt Hbf)
+STUTTGART,Stuttgart,Allemagne,48.7840,9.1820,Coordonnées approximatives (Stuttgart Hbf)
+GENEVE,Genève,Suisse,46.2100,6.1424,Coordonnées approximatives (Genève Cornavin)
+LAUSANNE,Lausanne,Suisse,46.5167,6.6291,Coordonnées approximatives
+ZURICH,Zurich,Suisse,47.3779,8.5403,Coordonnées approximatives (Zürich HB)
+ITALIE,Italie,Italie,,,Regroupement de destinations italiennes : pas une gare
