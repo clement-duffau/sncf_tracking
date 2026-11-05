@@ -27,7 +27,7 @@ calculés sur les données du 5 novembre 2026.
 - **Mois anormaux non annotés** (signalés à chaque build, faute de source fiable sur leur cause) : Intercités
   décembre 2017 (programmés −20,6 % à périmètre constant) et TGV juillet 2018 (5,4 % d'annulations, fin de la grève
   du printemps ?). À compléter dans `data/events.yaml` si une source est trouvée.
-- **Questions encore ouvertes** : licence du code et URL GitHub Pages (question 8).
+- **Question 8 tranchée** : code sous licence MIT, site à l'URL par défaut https://clement-duffau.github.io/sncf_tracking/.
 
 ## Sommaire
 

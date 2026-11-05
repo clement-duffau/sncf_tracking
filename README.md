@@ -1,9 +1,9 @@
 # Le classement des liaisons ferroviaires
 
-Site statique (en construction) sur la **régularité des trains en France** à partir des données open data SNCF :
+Site statique sur la **régularité des trains en France** à partir des données open data SNCF :
 un classement des liaisons TGV et Intercités avec un score de fiabilité pondéré façon bayésienne, une fiche par
 liaison (historique, causes, gravité des retards), les tendances, une page « Mon trajet » et des statistiques
-globales. Publication prévue sur GitHub Pages, sans backend.
+globales. Publié sur GitHub Pages, sans backend : **https://clement-duffau.github.io/sncf_tracking/**
 
 ## État d'avancement
 
@@ -12,7 +12,7 @@ globales. Publication prévue sur GitHub Pages, sans backend.
 | Phase 1 | Exploration des données : [`docs/DATA.md`](docs/DATA.md) | fait |
 | Phase 2 | Plan : [`docs/PLAN.md`](docs/PLAN.md) | validé |
 | 1 | Pipeline de production, tests, `data/events.yaml` | fait |
-| 2 | Site : classement, filtres, méthodologie ; déploiement Pages | à faire |
+| 2 | Site : classement, filtres, méthodologie ; déploiement Pages | fait |
 | 3 | Fiche liaison | à faire |
 | 4 | Mon trajet | à faire |
 | 5 | Tendances, Statistiques, périodes libres | à faire |
@@ -20,7 +20,7 @@ globales. Publication prévue sur GitHub Pages, sans backend.
 
 ## Démarrage rapide
 
-Prérequis : Python 3.11 ou plus récent.
+Prérequis : Python 3.11+ et Node.js 20+.
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
@@ -34,11 +34,15 @@ pip install -r requirements.txt
 python -m pipeline build
 ```
 
+```bash
+cd site && npm install && npm run dev
+```
+
 `python -m pipeline build` télécharge les jeux SNCF (≈ 5 Mo, avec reprises automatiques si la connexion est
 coupée) dans `data/raw/`, vérifie leur format, calcule les scores, tendances et probabilités « Mon trajet », puis
 écrit les fichiers du site dans `site/public/data/` (une dizaine de secondes une fois les fichiers téléchargés).
 
-### Commandes
+### Commandes du pipeline
 
 | Commande | Effet |
 |---|---|
@@ -49,6 +53,15 @@ coupée) dans `data/raw/`, vérifie leur format, calcule les scores, tendances e
 | `python -m pytest -q tests` | tests du pipeline sur un mini-jeu synthétique |
 | `python pipeline/download.py` | télécharge aussi les jeux annexes utilisés par l'exploration |
 | `python pipeline/explore/01_tgv_liaisons.py` (… `08`) | régénère un rapport d'exploration dans `pipeline/explore/sorties/` |
+
+### Commandes du site (`site/`)
+
+| Commande | Effet |
+|---|---|
+| `npm run dev` | serveur de développement (lit `site/public/data/`, produit par le pipeline) |
+| `npm run check` | vérification des types (svelte-check) |
+| `npm test` | tests unitaires (Vitest : classement, filtres, formats) |
+| `npm run build` | site statique dans `site/dist/` |
 
 Un build **échoue avec un message explicite** si une source change de format (colonne absente ou de type
 différent), si le nombre de lignes baisse de plus de 5 % ou si le dernier mois publié recule par rapport à
@@ -78,8 +91,14 @@ data/
   events.yaml             grèves, COVID, ruptures de séries (versionné, sourcé)
   sources.lock.json       date de publication et volume de chaque jeu au dernier build (versionné)
   raw/                    données téléchargées (non versionné)
+site/                     Vite + Svelte 5 + TypeScript, sans backend
+  src/pages/              Classement, Méthodologie et sources
+  src/lib/classement.ts   lignes d'une période, filtres, tris, « coude à coude » (testé par Vitest)
+  src/lib/charts/         barre de score « voie », courbe des 12 derniers mois (SVG faits main)
+  src/lib/router.svelte.ts routeur par hash ; filtres reflétés dans l'URL (#/?type=TGV&periode=2025&region=Bretagne)
 tests/                    pytest
 docs/                     DATA.md (exploration), PLAN.md (plan validé)
+.github/workflows/        ci.yml (tests + build), deploy.yml (données hebdomadaires + Pages)
 ```
 
 ### Fichiers produits (`site/public/data/`, non versionnés)
@@ -94,6 +113,14 @@ docs/                     DATA.md (exploration), PLAN.md (plan validé)
 | `gares.json` | gares desservies avec région, coordonnées et liaisons | 15 Ko / 3 Ko |
 | `evenements.json` | événements de `data/events.yaml` | 10 Ko / 3 Ko |
 | `donnees/*.csv` | export ouvert (ODbL) : mesures mensuelles, scores, liaisons, gares, « Mon trajet » | ≈ 3 Mo |
+
+## Déploiement
+
+1. Dans le dépôt GitHub : *Settings → Pages → Build and deployment → Source : **GitHub Actions***.
+2. Le workflow `deploy.yml` s'exécute à chaque push sur `main`, chaque lundi à 6 h 17 UTC et à la demande
+   (onglet *Actions*). Le passage du lundi s'arrête tôt si la SNCF n'a rien republié depuis le dernier build ;
+   sinon il reconstruit les données, enregistre `data/sources.lock.json` sur `main` et publie le site.
+3. Si une source change de format, le build échoue avec un message explicite et le site déjà publié reste en place.
 
 ## Méthode en bref
 
@@ -113,3 +140,5 @@ Données : **SNCF Voyageurs** (régularité mensuelle TGV par liaisons, par axe 
 **SNCF Gares & Connexions** (gares de voyageurs), via [ressources.data.sncf.com](https://ressources.data.sncf.com),
 sous licence [Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/1-0/). Les données dérivées
 produites par le pipeline (`site/public/data/`, dont `donnees/*.csv`) sont diffusées sous la même licence.
+
+Code : licence [MIT](LICENSE).
