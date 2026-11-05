@@ -78,12 +78,12 @@ _Généré par `pipeline/explore/01_tgv_liaisons.py`._
 | service | gare_depart | gare_arrivee | nb_mois | premier | dernier |
 |---|---|---|---|---|---|
 | International | BARCELONA | PARIS LYON | 93 | 2018-01-01 | 2025-09-01 |
-| National | BORDEAUX ST JEAN | PARIS VAUGIRARD | 12 | 2018-01-01 | 2018-12-01 |
 | National | BORDEAUX ST JEAN | TOURCOING | 103 | 2018-01-01 | 2026-09-01 |
+| National | BORDEAUX ST JEAN | PARIS VAUGIRARD | 12 | 2018-01-01 | 2018-12-01 |
 | International | ITALIE | PARIS LYON | 101 | 2018-01-01 | 2026-09-01 |
 | International | MADRID | MARSEILLE ST CHARLES | 45 | 2018-01-01 | 2022-12-01 |
-| National | MARSEILLE ST CHARLES | TOURCOING | 104 | 2018-01-01 | 2026-09-01 |
 | International | MARSEILLE ST CHARLES | MADRID | 45 | 2018-01-01 | 2022-12-01 |
+| National | MARSEILLE ST CHARLES | TOURCOING | 104 | 2018-01-01 | 2026-09-01 |
 | National | NANTES | PARIS VAUGIRARD | 12 | 2018-01-01 | 2018-12-01 |
 | International | PARIS LYON | ITALIE | 101 | 2018-01-01 | 2026-09-01 |
 | International | PARIS LYON | ZURICH | 104 | 2018-01-01 | 2026-09-01 |
@@ -104,10 +104,10 @@ _Généré par `pipeline/explore/01_tgv_liaisons.py`._
 | International | MULHOUSE VILLE | PARIS LYON | 3 | 2025-07-01 | 2025-09-01 |
 | International | PARIS EST | STRASBOURG | 3 | 2025-07-01 | 2025-09-01 |
 | International | PARIS LYON | MACON LOCHE | 3 | 2025-07-01 | 2025-09-01 |
-| International | PARIS LYON | DIJON VILLE | 3 | 2025-07-01 | 2025-09-01 |
-| International | PARIS LYON | MULHOUSE VILLE | 3 | 2025-07-01 | 2025-09-01 |
-| International | PARIS LYON | BELLEGARDE (AIN) | 3 | 2025-07-01 | 2025-09-01 |
 | International | PARIS LYON | CHAMBERY CHALLES LES EAUX | 3 | 2025-07-01 | 2025-09-01 |
+| International | PARIS LYON | MULHOUSE VILLE | 3 | 2025-07-01 | 2025-09-01 |
+| International | PARIS LYON | DIJON VILLE | 3 | 2025-07-01 | 2025-09-01 |
+| International | PARIS LYON | BELLEGARDE (AIN) | 3 | 2025-07-01 | 2025-09-01 |
 | International | STRASBOURG | PARIS EST | 3 | 2025-07-01 | 2025-09-01 |
 | National | BARCELONA | PARIS LYON | 12 | 2025-10-01 | 2026-09-01 |
 | National | PARIS LYON | BARCELONA | 12 | 2025-10-01 | 2026-09-01 |
@@ -604,11 +604,11 @@ La régularité « globale » publiée n'est pas la moyenne des liaisons (un tra
 | MARSEILLE ST CHARLES | TOURCOING | 22 |
 | BORDEAUX ST JEAN | TOURCOING | 26 |
 | TOURCOING | BORDEAUX ST JEAN | 27 |
-| NANTES | STRASBOURG | 57 |
 | STRASBOURG | NANTES | 57 |
+| NANTES | STRASBOURG | 57 |
 | BARCELONA | PARIS LYON | 66 |
 | PARIS LYON | BARCELONA | 67 |
-| ITALIE | PARIS LYON | 76 |
 | PARIS LYON | ITALIE | 76 |
+| ITALIE | PARIS LYON | 76 |
 | LYON PART DIEU | RENNES | 90 |
 

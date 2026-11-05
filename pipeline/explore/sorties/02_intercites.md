@@ -300,10 +300,10 @@ _Généré par `pipeline/explore/02_intercites.py`._
 | 0 | 318 |
 | 16 | 1 |
 | 22 | 2 |
-| 11 | 1 |
-| 12 | 1 |
 | 10 | 1 |
 | 13 | 1 |
+| 11 | 1 |
+| 12 | 1 |
 
 ## Séries mensuelles
 
