@@ -8,7 +8,7 @@ les données téléchargées le **5 novembre 2026**. Chaque script écrit son ra
 Pour reproduire :
 
 ```bash
-pip install -r pipeline/requirements.txt
+pip install -r requirements.txt
 python pipeline/download.py                     # tout (≈ 10 Mo) → data/raw/
 python pipeline/explore/01_tgv_liaisons.py      # puis 02 … 08
 ```

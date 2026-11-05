@@ -4,7 +4,30 @@ Ce plan s'appuie sur l'exploration décrite dans [`DATA.md`](DATA.md). Les chiff
 `pipeline/explore/sorties/06_score_variantes.md` (score) et `07_tendances_mon_trajet.md` (tendances, « Mon trajet »),
 calculés sur les données du 5 novembre 2026.
 
-> **Statut : proposition en attente de validation.** Aucun pipeline de production ni front n'est écrit.
+> **Statut : plan validé avec les recommandations (5 novembre 2026).** Étape 1 (pipeline de production, tests,
+> `data/events.yaml`) réalisée ; voir « Mise en œuvre » ci-dessous pour les précisions apportées en cours de route.
+
+### Mise en œuvre de l'étape 1 : précisions et écarts
+
+- **Gares** : aucune correspondance automatique approximative en production. Seules l'égalité des noms normalisés,
+  `pipeline/refs/gares_alias.csv` (18 libellés relus) et `gares_etrangeres.csv` (8) sont utilisées ; un libellé
+  inconnu fait échouer le build avec des candidats suggérés.
+- **Paris-Vaugirard** reste une gare distincte (même code UIC que Montparnasse, mais ses 622 trains de 2018 vers
+  Bordeaux s'ajoutaient à ceux de Montparnasse, qui ne les a pas absorbés en 2019 : fusionner créerait une marche).
+- **Lille, Montpellier** (TGV) et **Lyon** (Intercités depuis 2018) sont rattachés à la ville (`precision: ville`),
+  la gare exacte n'étant pas connue ; la région n'en dépend pas.
+- **Gravité imputée des Intercités** : parts TGV des mêmes mois ; avant 2018 (pas de données TGV par liaison),
+  parts TGV de tout l'historique.
+- **Couverture partielle** : moins de 6 mois de données dans la période (ou moins que la durée de la période si
+  elle est plus courte).
+- **« Mon trajet »** est calculé pour les liaisons ayant des données dans les 24 derniers mois du type.
+- **Tendance du réseau** : −3,7 points pour le TGV (et non −4,2 comme dans l'essai de phase 2), car la grève de
+  juin 2026 est maintenant exclue des tendances ; 27 liaisons TGV « en dégradation » en absolu, une seule se
+  distingue du réseau.
+- **Mois anormaux non annotés** (signalés à chaque build, faute de source fiable sur leur cause) : Intercités
+  décembre 2017 (programmés −20,6 % à périmètre constant) et TGV juillet 2018 (5,4 % d'annulations, fin de la grève
+  du printemps ?). À compléter dans `data/events.yaml` si une source est trouvée.
+- **Questions encore ouvertes** : licence du code et URL GitHub Pages (question 8).
 
 ## Sommaire
 
