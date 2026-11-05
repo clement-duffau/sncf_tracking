@@ -39,9 +39,12 @@ python pipeline/explore/01_tgv_liaisons.py      # puis 02 … 08
 | `gares_voyageurs` | [gares-de-voyageurs](https://ressources.data.sncf.com/explore/dataset/gares-de-voyageurs/) | SNCF Gares & Connexions | ODbL | 2 792 gares | 2 792 | 2026-11-04 |
 | `liste_gares` | [liste-des-gares](https://ressources.data.sncf.com/explore/dataset/liste-des-gares/) | SNCF Réseau | ODbL | 6 469 points | 6 469 | 2025-10-02 |
 
-Repérés dans le catalogue mais **non profilés** (téléchargement non terminé au moment de l'exploration, et pas
-nécessaires à la v1) : `meilleurs-temps-des-parcours-des-trains` (3 999 lignes), `frequentation-gares` (3 021),
-`ponctualite-mensuelle-transilien` (2 087, hors périmètre). Aucun jeu de **causes de retard Intercités**, de
+Autres jeux examinés :
+- `meilleurs-temps-des-parcours-des-trains` (`temps_parcours`, 3 999 lignes) : meilleur temps estimé par relation
+  ville – ville (43 relations), **de 1920 à 2019 seulement** ; inutile pour les seuils actuels (la colonne
+  `duree_moyenne` du jeu TGV suffit), éventuellement pour une anecdote historique sur une fiche.
+- `frequentation-gares` (3 021 lignes) et `ponctualite-mensuelle-transilien` (2 087, hors périmètre) : repérés,
+  **non profilés** (pas nécessaires à la v1). Aucun jeu de **causes de retard Intercités**, de
 ponctualité par ligne TER ni de données par train n'existe sur le portail (recherche sur les 164 jeux du catalogue).
 
 ### API Opendatasoft ou data.gouv.fr ?
