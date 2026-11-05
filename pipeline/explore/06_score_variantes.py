@@ -157,6 +157,24 @@ for type_ in ["TGV", "Intercités"]:
         if type_ == "TGV":
             r.table(f"{type_} — {v} : bas du classement", f"select rang, * exclude (rang) from (select row_number() over (order by {v} desc) rang, {cols} from scores where type = '{type_}') order by rang desc limit 10")
 
+r.section("3 bis. Intercités — V2 avec gravité imputée")
+r.texte("Les Intercités ne publient pas la gravité. Variante : on répartit leurs trains en retard comme la moyenne TGV "
+        "de la même fenêtre (part des > 30 min et > 60 min **parmi les trains en retard**), ce qui revient à ne les "
+        "départager que sur retards et annulations, sur la même échelle que le TGV.")
+con.sql("""
+create or replace table ic_v2 as
+with tg as (select sum(s30) / sum(retards) q30, sum(s60) / sum(retards) q60 from periode where type = 'TGV')
+select a || ' – ' || b liaison, circules, round(100 * (1 - retards / circules), 1) regularite_brute, round(100 * annules / prevus, 2) annul_brut,
+  100 * (1 - ((1 - ann_l) * (ret_l * (1 - (select q30 from tg)) * 1 + ret_l * ((select q30 from tg) - (select q60 from tg)) * 2
+                             + ret_l * (select q60 from tg) * 3) + ann_l * 3) / 3) V2_impute,
+  (select q30 from tg) q30, (select q60 from tg) q60
+from compo where type = 'Intercités'
+""")
+r.table("Parts TGV utilisées pour l'imputation (parmi les trains en retard)", "select distinct round(100 * q30, 1) pct_sup30_parmi_retards, round(100 * q60, 1) pct_sup60_parmi_retards from ic_v2")
+r.table("Intercités — V2 (gravité imputée)", """
+select row_number() over (order by V2_impute desc) rang, liaison, round(circules) circules, regularite_brute, annul_brut, round(V2_impute, 1) V2_impute
+from ic_v2 order by V2_impute desc""")
+
 r.section("4. Concordance des variantes (TGV, corrélation de rang de Spearman)")
 r.table("Corrélations entre variantes", """
 with rk as (select rank() over (order by V1) r1, rank() over (order by V2) r2, rank() over (order by V3) r3,

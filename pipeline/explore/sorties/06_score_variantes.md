@@ -169,6 +169,37 @@ Sur la fenêtre de 12 mois : variance inter-liaisons observée des taux = varian
 | 15 | BRIANÇON – PARIS-AUSTERLITZ | 482 | 67.4 | 1.43 | 68 | 66.5 |
 | 16 | BORDEAUX-ST-JEAN – MARSEILLE-ST-CHARLES | 4632 | 64.6 | 2.97 | 62.9 | 62.7 |
 
+## 3 bis. Intercités — V2 avec gravité imputée
+
+Les Intercités ne publient pas la gravité. Variante : on répartit leurs trains en retard comme la moyenne TGV de la même fenêtre (part des > 30 min et > 60 min **parmi les trains en retard**), ce qui revient à ne les départager que sur retards et annulations, sur la même échelle que le TGV.
+
+### Parts TGV utilisées pour l'imputation (parmi les trains en retard)
+
+| pct_sup30_parmi_retards | pct_sup60_parmi_retards |
+|---|---|
+| 39.9 | 16.5 |
+
+### Intercités — V2 (gravité imputée)
+
+| rang | liaison | circules | regularite_brute | annul_brut | V2_impute |
+|---|---|---|---|---|---|
+| 1 | BÉZIERS – CLERMONT-FERRAND | 725 | 93.1 | 0.68 | 95.2 |
+| 2 | LYON – NANCY | 731 | 88.1 | 0.27 | 93.2 |
+| 3 | CLERMONT-FERRAND – PARIS-BERCY | 5098 | 88.3 | 1.09 | 92.9 |
+| 4 | BRIVE/CAHORS – PARIS-AUSTERLITZ | 4153 | 86.5 | 0.72 | 92.2 |
+| 5 | PARIS-AUSTERLITZ – TOULOUSE-MATABIAU | 2256 | 86 | 1.1 | 91.6 |
+| 6 | BORDEAUX-ST-JEAN – NANTES | 2828 | 84.9 | 1.36 | 90.8 |
+| 7 | LATOUR-DE-CAROL – PARIS-AUSTERLITZ | 292 | 84.2 | 1.02 | 90.5 |
+| 8 | HENDAYE – TOULOUSE-MATABIAU | 2700 | 85.9 | 2.24 | 90.5 |
+| 9 | ALBI/RODEZ – PARIS-AUSTERLITZ | 604 | 88.9 | 5.03 | 89.4 |
+| 10 | PARIS-AUSTERLITZ – TARBES | 441 | 87.1 | 4.13 | 89.4 |
+| 11 | CERBERE – PARIS-AUSTERLITZ | 336 | 81 | 1.47 | 88.8 |
+| 12 | LYON – NANTES | 2022 | 78.8 | 1.37 | 87.8 |
+| 13 | AURILLAC – PARIS-AUSTERLITZ | 546 | 86.1 | 7.14 | 86.4 |
+| 14 | NICE-VILLE – PARIS-AUSTERLITZ | 612 | 73 | 2.86 | 84 |
+| 15 | BRIANÇON – PARIS-AUSTERLITZ | 482 | 67.4 | 1.43 | 82.6 |
+| 16 | BORDEAUX-ST-JEAN – MARSEILLE-ST-CHARLES | 4632 | 64.6 | 2.97 | 79.3 |
+
 ## 4. Concordance des variantes (TGV, corrélation de rang de Spearman)
 
 ### Corrélations entre variantes
