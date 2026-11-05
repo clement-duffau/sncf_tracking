@@ -42,7 +42,7 @@ r.table("Noms de gares/libellés composites (contenant « / »)", """
 select distinct g from (select depart g from i union select arrivee from i) where g like '%/%' order by 1""")
 r.table("Liaisons ayant plusieurs lignes le même mois (doublons apparents)", """
 select depart, arrivee, count(*) mois_concernes, min(date) premier, max(date) dernier
-from (select date, depart, arrivee from i group by all having count(*) > 1) group by all""")
+from (select date, depart, arrivee from i group by all having count(*) > 1) group by all order by depart, arrivee""")
 r.table("Exemple de doublon : Paris-Austerlitz → Toulouse, 2 mois", """
 select * from i where depart = 'PARIS-AUSTERLITZ' and arrivee = 'TOULOUSE-MATABIAU' and date in ('2022-01-01', '2026-05-01') order by date""")
 r.table("Liaisons présentes sur les 12 derniers mois disponibles", """
@@ -69,7 +69,7 @@ select taux_de_regularite, nombre_de_trains_a_l_heure_pour_un_train_en_retard_a_
 where nombre_de_trains_ayant_circule = 0 group by all""")
 r.table("Ratio « trains à l'heure pour un train en retard » quand 0 retard", """
 select nombre_de_trains_a_l_heure_pour_un_train_en_retard_a_l_arrivee ratio, count(*) from i
-where nombre_de_trains_en_retard_a_l_arrivee = 0 and nombre_de_trains_ayant_circule > 0 group by all""")
+where nombre_de_trains_en_retard_a_l_arrivee = 0 and nombre_de_trains_ayant_circule > 0 group by all order by 1""")
 
 r.section("Séries mensuelles")
 r.table("Totaux mensuels", """

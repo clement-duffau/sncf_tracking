@@ -128,15 +128,15 @@ else:
 r.section("Régions des liaisons (12 derniers mois)")
 con.sql("create or replace table gare_region as select c.*, d.region from corresp c left join dep_region d using (dep)")
 r.table("Régions des gares TGV rattachées", """
-select region, count(distinct morceau) gares, string_agg(distinct morceau, ', ') liste from gare_region where source = 'TGV' group by 1 order by 1""")
+select region, count(distinct morceau) gares, string_agg(distinct morceau, ', ' order by morceau) liste from gare_region where source = 'TGV' group by 1 order by 1""")
 r.table("Régions des gares Intercités rattachées", """
-select region, count(distinct morceau) gares, string_agg(distinct morceau, ', ') liste from gare_region where source = 'Intercités' group by 1 order by 1""")
+select region, count(distinct morceau) gares, string_agg(distinct morceau, ', ' order by morceau) liste from gare_region where source = 'Intercités' group by 1 order by 1""")
 r.table("Nombre de liaisons TGV (non orientées, 12 derniers mois) touchant chaque région", """
 with l as (select distinct least(gare_depart, gare_arrivee) a, greatest(gare_depart, gare_arrivee) b from tgv_aqst
            where date > (select max(date) from tgv_aqst) - interval 12 month),
 lr as (select a, b, ga.region ra, gb.region rb from l
        left join (select morceau, region from gare_region where source = 'TGV') ga on ga.morceau = a
        left join (select morceau, region from gare_region where source = 'TGV') gb on gb.morceau = b)
-select region, count(*) liaisons from (select a, b, ra region from lr union select a, b, rb from lr) group by 1 order by 2 desc""")
+select region, count(*) liaisons from (select a, b, ra region from lr union select a, b, rb from lr) group by 1 order by 2 desc, 1""")
 
 r.ecrire()

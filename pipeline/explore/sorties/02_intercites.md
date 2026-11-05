@@ -298,12 +298,12 @@ _Généré par `pipeline/explore/02_intercites.py`._
 | ratio | count_star() |
 |---|---|
 | 0 | 318 |
-| 16 | 1 |
-| 22 | 2 |
 | 10 | 1 |
-| 13 | 1 |
 | 11 | 1 |
 | 12 | 1 |
+| 13 | 1 |
+| 16 | 1 |
+| 22 | 2 |
 
 ## Séries mensuelles
 

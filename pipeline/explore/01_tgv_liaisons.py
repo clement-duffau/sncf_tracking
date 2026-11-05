@@ -55,7 +55,7 @@ r.section("Liaisons")
 r.table("Liaisons dont la couverture n'est pas complète (apparitions / disparitions / reclassements)", """
 with tot as (select count(distinct date) n from t)
 select service, gare_depart, gare_arrivee, count(*) nb_mois, min(date) premier, max(date) dernier
-from t group by all having count(*) < (select n from tot) order by premier, gare_depart""")
+from t group by all having count(*) < (select n from tot) order by premier, gare_depart, gare_arrivee, service""")
 r.table("Liaisons orientées sans liaison retour", """
 select service, gare_depart, gare_arrivee from (select distinct service, gare_depart, gare_arrivee from t) a
 where not exists (select 1 from t b where b.gare_depart = a.gare_arrivee and b.gare_arrivee = a.gare_depart)""")
@@ -146,7 +146,7 @@ r.texte("Les six colonnes `prct_cause_*` sont des pourcentages **des trains en r
         "(libellés du portail). Vérification de leur somme :")
 r.table("Distribution de la somme des 6 pourcentages (arrondie)", """
 select round(somme_causes) somme, count(*) lignes, count(*) filter (where nb_train_retard_arrivee > 0) dont_avec_retards
-from t group by 1 order by 2 desc""")
+from t group by 1 order by 2 desc, 1""")
 r.table("Lignes avec retards mais causes toutes à 0, par année", """
 select year(date) annee, count(*) lignes, sum(nb_train_retard_arrivee) retards_concernes
 from t where somme_causes = 0 and nb_train_retard_arrivee > 0 group by 1 order by 1""")
@@ -202,6 +202,6 @@ from t where circules > 0""")
 r.table("Liaisons les moins fréquentées (moyenne de trains circulés par mois, 12 derniers mois)", """
 select gare_depart, gare_arrivee, round(avg(c)) circules_par_mois from
  (select gare_depart, gare_arrivee, date, sum(circules) c from t where date > (select max(date) from t) - interval 12 month group by all)
-group by all order by 3 limit 10""")
+group by all order by 3, 1, 2 limit 10""")
 
 r.ecrire()
