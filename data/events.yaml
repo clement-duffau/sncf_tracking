@@ -1,0 +1,249 @@
+# Événements annotés sur les séries de régularité.
+#
+# Fichier tenu à la main et relu. Chaque entrée cite au moins une source. Le pipeline
+# (pipeline/events.py) le valide et l'utilise pour :
+#   - dessiner des bandes grisées sur les graphiques temporels ;
+#   - exclure les mois listés dans `exclure` des calculs de tendances, de saisonnalité et de « Mon trajet »
+#     (jamais du score : il reflète ce qu'ont vécu les voyageurs) ;
+#   - documenter les ruptures de séries propres aux données (type `donnees`), dont certaines
+#     changent les calculs (`effet`).
+#
+# Champs :
+#   id        identifiant stable (minuscules, tirets)
+#   titre     libellé affiché
+#   type      greve | covid | incident | meteo | donnees | perimetre
+#   debut     premier mois concerné (AAAA-MM)
+#   fin       dernier mois concerné (AAAA-MM), par défaut = debut
+#   types     types de train touchés : TGV, Intercités, TER
+#   exclure   calculs dont ces mois sont retirés : tendances, saisonnalite, mon_trajet
+#   effet     (type donnees) : gravite_invalide | rupture_causes
+#   observe   ce que montrent les données (rapports pipeline/explore/sorties/)
+#   sources   liens
+#
+# Le pipeline signale dans le journal de build les mois anormaux (annulations TGV > 5 %, ou trains
+# programmés Intercités / TER en baisse de plus de 20 % sur un an) qui ne sont couverts par aucune entrée.
+
+# ------------------------------------------------------------------ grèves
+- id: greve-2014-reforme-ferroviaire
+  titre: Grève contre la réforme ferroviaire
+  type: greve
+  debut: 2014-06
+  types: [Intercités, TER]
+  exclure: [tendances, saisonnalite, mon_trajet]
+  observe: >-
+    Trains TER programmés −28 % par rapport à juin 2013 ; 14 régions mentionnent la grève dans leurs
+    commentaires. Grève reconductible à partir du 10 juin 2014 au soir, environ dix jours.
+  sources:
+    - https://www.kelbillet.com/blog/greve-sncf/sncf-greve-reconductible-partir-du-mardi-10-juin-2014
+    - https://www.webmanagercenter.com/2014/06/20/151546/greve-sncf-le-mouvement-se-fissure-les-deputes-ont-acheve-leurs-travaux/
+
+- id: greve-2016-loi-travail
+  titre: Grève contre la loi Travail
+  type: greve
+  debut: 2016-06
+  types: [Intercités, TER]
+  exclure: [tendances, saisonnalite, mon_trajet]
+  observe: >-
+    Intercités programmés −40 % et TER −21,5 % par rapport à juin 2015 ; 7 régions TER mentionnent la grève.
+    Grève reconductible à partir du 31 mai / 1er juin 2016.
+  sources:
+    - https://www.macommune.info/mouvement-des-cheminots-la-greve-est-reconduite-au-moins-jusqua-lundi-6-juin-144601
+    - https://www.tourmag.com/SNCF-la-greve-continue-jeudi-9-juin-2016_a81061.html
+
+- id: greve-2018-pacte-ferroviaire
+  titre: Grève « perlée » contre le pacte ferroviaire
+  type: greve
+  debut: 2018-04
+  fin: 2018-06
+  types: [TGV, Intercités, TER]
+  exclure: [tendances, saisonnalite, mon_trajet]
+  observe: >-
+    Annulations TGV : 32,7 % (avril), 24,5 % (mai), 15,1 % (juin). Intercités programmés −60 % en avril
+    par rapport à avril 2017 ; TER −39 %. Deux jours de grève sur cinq d'avril à fin juin 2018.
+  sources:
+    - https://fr.euronews.com/2018/04/04/la-greve-a-la-sncf-passee-au-crible
+    - https://www.universalis.fr/evenement/16-19-avril-2018-fin-de-la-concertation-sur-la-reforme-de-la-sncf/
+
+- id: greve-2019-2020-retraites
+  titre: Grève contre la réforme des retraites
+  type: greve
+  debut: 2019-12
+  fin: 2020-01
+  types: [TGV, Intercités, TER]
+  exclure: [tendances, saisonnalite, mon_trajet]
+  observe: >-
+    TGV : trains prévus divisés par deux en décembre 2019 (15 633) et 16 % d'annulations ; 5,6 % en janvier 2020.
+    Intercités programmés −69 % (déc.) et −74 % (janv.) ; TER −65 % (déc.). Grève illimitée à partir du 5 décembre 2019.
+  sources:
+    - https://www.lechotouristique.com/article/greve-du-5-decembre-un-service-minimum-est-il-prevu
+    - https://www.cheminotcgt.fr/wp-content/uploads/2020/01/20200107_Info_luttes_n33.pdf
+
+- id: greve-2022-noel-controleurs
+  titre: Grève des contrôleurs du week-end de Noël
+  type: greve
+  debut: 2022-12
+  types: [TGV, Intercités]
+  exclure: [tendances, saisonnalite, mon_trajet]
+  observe: >-
+    Annulations TGV : 11,3 % en décembre 2022 ; Intercités programmés −24 % par rapport à décembre 2021.
+    Environ deux TGV sur cinq supprimés les 24 et 25 décembre.
+  sources:
+    - https://www.lechotouristique.com/article/sncf-2-tgv-sur-5-annules-le-week-end-de-noel
+    - https://www.lalibre.be/economie/conjoncture/2022/12/23/fin-du-conflit-a-la-sncf-le-service-sera-pleinement-assure-pour-le-nouvel-an-7L3IB3NUWVCWTCO7XI6D2BMMNU/
+
+- id: greve-2023-retraites
+  titre: Grèves contre la réforme des retraites
+  type: greve
+  debut: 2023-01
+  fin: 2023-03
+  types: [TGV, Intercités, TER]
+  exclure: [tendances, saisonnalite, mon_trajet]
+  observe: >-
+    Annulations TGV : 5,3 % (janv.), 4,0 % (févr.), 23,3 % (mars). En mars, Intercités programmés −49 %
+    et TER −37 % par rapport à mars 2022. Journées de grève à partir du 19 janvier, grève reconductible à partir du 7 mars 2023.
+  sources:
+    - https://www.economiematin.fr/?p=96162
+    - https://www.objectifgard.com/societe/occitanie-les-intercites-annules-deux-ter-sur-cinq-et-un-tgv-sur-cinq-en-moyenne-ce-mardi-7-mars-106811.php
+
+- id: greve-2024-fevrier-controleurs
+  titre: Grève des contrôleurs des vacances d'hiver
+  type: greve
+  debut: 2024-02
+  types: [TGV]
+  exclure: [tendances, saisonnalite, mon_trajet]
+  observe: >-
+    Annulations TGV : 4,5 % en février 2024 (contre 0,1 à 0,9 % les mois voisins). Grève du 16 au 18 février 2024.
+  sources:
+    - https://www.lyonmag.com/article/134570/une-greve-des-controleurs-de-la-sncf-pour-le-coup-d-envoi-des-vacances-de-fevrier-de-l-academie-de-lyon
+    - https://fnaut.fr/uploads/2024/02/Communique-du-mercredi-14-fevrier-2024.pdf
+
+- id: greve-2026-juin
+  titre: Grève unitaire de juin 2026
+  type: greve
+  debut: 2026-06
+  types: [TGV, Intercités, TER]
+  exclure: [tendances, saisonnalite, mon_trajet]
+  observe: >-
+    Annulations TGV : 3,9 % en juin 2026 (0,4 % en mai). Grève de 24 heures des quatre syndicats représentatifs
+    le 10 juin 2026, environ un TGV sur trois supprimé selon la source.
+  sources:
+    - https://www.planetegrandesecoles.com/greve-sncf-2026
+
+# ------------------------------------------------------------------ COVID-19
+- id: covid-confinement-1
+  titre: COVID-19 — premier confinement et reprise
+  type: covid
+  debut: 2020-03
+  fin: 2020-06
+  types: [TGV, Intercités, TER]
+  exclure: [tendances, saisonnalite, mon_trajet]
+  observe: >-
+    Avril 2020 : 3 325 trains TGV prévus (−90 %), 61 % d'annulations, 50 liaisons à 0 train prévu ;
+    4 liaisons Intercités publiées. Confinement du 17 mars au 11 mai 2020.
+  sources:
+    - https://en.wikipedia.org/wiki/COVID-19_pandemic_in_France
+
+- id: covid-confinement-2
+  titre: COVID-19 — deuxième confinement
+  type: covid
+  debut: 2020-11
+  fin: 2020-12
+  types: [TGV, Intercités, TER]
+  exclure: [tendances, saisonnalite, mon_trajet]
+  observe: >-
+    Novembre 2020 : 9 757 trains TGV prévus et 15,9 % d'annulations. Confinement du 30 octobre au 15 décembre 2020.
+  sources:
+    - https://en.wikipedia.org/wiki/COVID-19_pandemic_in_France
+
+- id: covid-confinement-3
+  titre: COVID-19 — troisième confinement
+  type: covid
+  debut: 2021-04
+  fin: 2021-05
+  types: [TGV, Intercités, TER]
+  exclure: [tendances, saisonnalite, mon_trajet]
+  observe: >-
+    Avril 2021 : 37,5 % d'annulations TGV et une régularité de 93,9 % (peu de trains). Confinement à partir du 3 avril 2021.
+  sources:
+    - https://en.wikipedia.org/wiki/COVID-19_pandemic_in_France
+
+# ------------------------------------------------------------------ incidents et météo
+- id: sabotage-2024-juillet
+  titre: Sabotage coordonné des lignes à grande vitesse (veille des JO)
+  type: incident
+  debut: 2024-07
+  types: [TGV]
+  exclure: []
+  observe: >-
+    Annulations TGV : 2,7 % en juillet 2024 (0,4 % en juin). Incendies volontaires le 26 juillet 2024 sur les
+    lignes Atlantique, Nord et Est. Mois gardé dans les calculs : une journée sur trente et un.
+  sources:
+    - https://www.franceinfo.fr/economie/transports/sncf/attaque-massive-sur-le-reseau-tgv/
+    - https://www.universalis.fr/evenement/26-juillet-2024-actes-de-sabotage-sur-plusieurs-lignes-tgv/
+
+- id: meteo-2026-janvier
+  titre: Neige, verglas et tempête Goretti
+  type: meteo
+  debut: 2026-01
+  types: [TGV, Intercités, TER]
+  exclure: []
+  observe: >-
+    Régularité TGV recalculée sur les liaisons du service National : 77,6 % en janvier 2026 (84,0 % en février). Neige du 5 au 7 janvier
+    et tempête Goretti les 8 et 9 janvier 2026. Mois gardé dans les calculs : épisode météo, pas une rupture.
+  sources:
+    - https://france3-regions.franceinfo.fr/centre-val-de-loire/loiret/orleans/neige-le-trafic-sncf-interrompu-entre-paris-et-orleans-presque-aucun-bus-a-tours-3276866.html
+    - https://www.sortiraparis.com/en/news/in-paris/articles/339409-storm-goretti-causes-train-disruptions-sncf-lines-to-and-from-paris-suspended
+
+# ------------------------------------------------------------------ périmètre et ruptures de données
+- id: normandie-transfert-ter
+  titre: Les Intercités normands deviennent des TER
+  type: perimetre
+  debut: 2020-01
+  types: [Intercités, TER]
+  exclure: []
+  observe: >-
+    Les 14 liaisons Intercités normandes encore publiées s'arrêtent en décembre 2019 ; TER Normandie passe d'environ
+    8 200 à 10 373 trains programmés par mois (février 2020). Note du portail SNCF (jeu Intercités).
+  sources:
+    - https://ressources.data.sncf.com/explore/dataset/regularite-mensuelle-intercites/
+
+- id: donnees-gravite-2025
+  titre: Comptes de retards > 30 et > 60 min inexploitables
+  type: donnees
+  debut: 2025-01
+  fin: 2025-03
+  types: [TGV]
+  effet: gravite_invalide
+  exclure: []
+  observe: >-
+    Retards > 30 min nuls ou négatifs (jusqu'à −44) et > 60 min supérieurs aux > 30 min sur environ 118 liaisons
+    par mois. Les retards > 30 et > 60 min de ces mois sont ignorés.
+  sources:
+    - https://ressources.data.sncf.com/explore/dataset/regularite-mensuelle-tgv-aqst/
+
+- id: donnees-services-2025
+  titre: Trains publiés à la fois en service National et International
+  type: donnees
+  debut: 2025-07
+  fin: 2025-09
+  types: [TGV]
+  exclure: []
+  observe: >-
+    14 liaisons (Paris ↔ Bellegarde, Chambéry, Dijon, Mâcon, Mulhouse, Strasbourg ; Lyon ↔ Marseille) ont une ligne
+    National et une ligne International le même mois. Le pipeline les additionne.
+  sources:
+    - https://ressources.data.sncf.com/explore/dataset/regularite-mensuelle-tgv-aqst/
+
+- id: donnees-causes-2026
+  titre: Changement probable de classement des causes de retard
+  type: donnees
+  debut: 2026-05
+  types: [TGV]
+  effet: rupture_causes
+  exclure: []
+  observe: >-
+    D'un mois à l'autre, l'infrastructure passe d'environ 20 % à 6 % des causes, la gestion du trafic d'environ
+    20 % à 5 %, la gestion en gare de 8–12 % à 21–32 %. Non documenté par le portail : les causes d'avant et
+    d'après ne sont pas comparées.
+  sources:
+    - https://ressources.data.sncf.com/explore/dataset/regularite-mensuelle-tgv-aqst/
