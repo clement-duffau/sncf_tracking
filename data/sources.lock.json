@@ -1,0 +1,31 @@
+{
+  "gares_voyageurs": {
+    "data_processed": "2026-11-04T13:43:05+00:00",
+    "records_count": 2792
+  },
+  "intercites": {
+    "data_processed": "2026-07-27T14:46:56+00:00",
+    "records_count": 5949,
+    "dernier_mois": "2026-05"
+  },
+  "ter": {
+    "data_processed": "2026-09-10T14:06:29+00:00",
+    "records_count": 2380,
+    "dernier_mois": "2026-08"
+  },
+  "tgv_aqst": {
+    "data_processed": "2026-10-02T10:10:31+00:00",
+    "records_count": 12907,
+    "dernier_mois": "2026-09"
+  },
+  "tgv_axes": {
+    "data_processed": "2026-10-02T10:06:13+00:00",
+    "records_count": 835,
+    "dernier_mois": "2026-09"
+  },
+  "tgv_national": {
+    "data_processed": "2026-10-02T10:03:46+00:00",
+    "records_count": 141,
+    "dernier_mois": "2026-09"
+  }
+}
