@@ -10,3 +10,6 @@ __pycache__/
 # Node / front (à venir)
 node_modules/
 dist/
+# Fichiers produits par le pipeline (reconstruits par la CI)
+site/public/data/
+.pytest_cache/
