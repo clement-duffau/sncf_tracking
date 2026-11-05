@@ -105,6 +105,16 @@ group by 1 having count(*) > 1 order by 1""")
 r.table("Correspondances exactes (contrôle)", """
 select source, morceau libelle_source, nom gare_referentiel from corresp where methode = 'exact' order by source, morceau""")
 
+r.section("Résolution des 2 gares françaises non rattachées via « Liste des gares » (SNCF Réseau, codes UIC)")
+if (RAW / "liste_gares.parquet").exists():
+    r.table("Valence TGV (commune d'Alixan) et Paris-Vaugirard : code UIC puis gare de voyageurs correspondante", f"""
+    with lg as (select distinct code_uic, libelle, commune, departemen from liste_gares
+                where libelle in ('Valence-TGV', 'Paris-Vaugirard'))
+    select lg.libelle libelle_reseau, lg.commune, lg.departemen, lg.code_uic, r.nom gare_voyageurs, r.codes_uic
+    from lg left join ref r on r.codes_uic like '%' || lg.code_uic || '%'""")
+else:
+    r.texte("_liste_gares.parquet absent : section non calculée._")
+
 r.section("Régions des liaisons (12 derniers mois)")
 con.sql("create or replace table gare_region as select c.*, d.region from corresp c left join dep_region d using (dep)")
 r.table("Régions des gares TGV rattachées", """

@@ -167,6 +167,15 @@ _Généré par `pipeline/explore/04_gares.py`._
 | TGV | TOURS | Tours |
 | TGV | VANNES | Vannes |
 
+## Résolution des 2 gares françaises non rattachées via « Liste des gares » (SNCF Réseau, codes UIC)
+
+### Valence TGV (commune d'Alixan) et Paris-Vaugirard : code UIC puis gare de voyageurs correspondante
+
+| libelle_reseau | commune | departemen | code_uic | gare_voyageurs | codes_uic |
+|---|---|---|---|---|---|
+| Paris-Vaugirard | PARIS | PARIS | 87391102 | Paris Montparnasse | 87391003;87391011;87391102 |
+| Valence-TGV | ALIXAN | DROME | 87763029 | Valence TGV Rhône-Alpes Sud | 87763029 |
+
 ## Régions des liaisons (12 derniers mois)
 
 ### Régions des gares TGV rattachées
@@ -174,17 +183,17 @@ _Généré par `pipeline/explore/04_gares.py`._
 | region | gares | liste |
 |---|---|---|
 | Auvergne-Rhône-Alpes | 6 | ANNECY, CHAMBERY CHALLES LES EAUX, GRENOBLE, BELLEGARDE (AIN), LYON PART DIEU, SAINT ETIENNE CHATEAUCREUX |
-| Bourgogne-Franche-Comté | 4 | BESANCON FRANCHE COMTE TGV, DIJON VILLE, LE CREUSOT MONTCEAU MONTCHANIN, MACON LOCHE |
-| Bretagne | 5 | RENNES, QUIMPER, BREST, ST MALO, VANNES |
+| Bourgogne-Franche-Comté | 4 | BESANCON FRANCHE COMTE TGV, DIJON VILLE, MACON LOCHE, LE CREUSOT MONTCEAU MONTCHANIN |
+| Bretagne | 5 | QUIMPER, RENNES, BREST, ST MALO, VANNES |
 | Centre-Val de Loire | 2 | TOURS, ST PIERRE DES CORPS |
 | Grand Est | 5 | REIMS, STRASBOURG, METZ, NANCY, MULHOUSE VILLE |
-| Hauts-de-France | 5 | DOUAI, ARRAS, TOURCOING, LILLE, DUNKERQUE |
+| Hauts-de-France | 5 | ARRAS, TOURCOING, LILLE, DOUAI, DUNKERQUE |
 | Nouvelle-Aquitaine | 4 | BORDEAUX ST JEAN, LA ROCHELLE VILLE, POITIERS, ANGOULEME |
 | Occitanie | 4 | NIMES, TOULOUSE MATABIAU, PERPIGNAN, MONTPELLIER |
-| Pays de la Loire | 4 | LAVAL, NANTES, ANGERS SAINT LAUD, LE MANS |
-| Provence-Alpes-Côte d'Azur | 5 | AIX EN PROVENCE TGV, MARSEILLE ST CHARLES, TOULON, AVIGNON TGV, NICE VILLE |
-| Île-de-France | 5 | PARIS MONTPARNASSE, PARIS EST, MARNE LA VALLEE, PARIS LYON, PARIS NORD |
-|  | 10 | GENEVE, PARIS VAUGIRARD, STUTTGART, MADRID, LAUSANNE, VALENCE ALIXAN TGV, ITALIE, FRANCFORT, BARCELONA, ZURICH |
+| Pays de la Loire | 4 | ANGERS SAINT LAUD, LAVAL, NANTES, LE MANS |
+| Provence-Alpes-Côte d'Azur | 5 | AIX EN PROVENCE TGV, MARSEILLE ST CHARLES, AVIGNON TGV, NICE VILLE, TOULON |
+| Île-de-France | 5 | PARIS MONTPARNASSE, MARNE LA VALLEE, PARIS NORD, PARIS LYON, PARIS EST |
+|  | 10 | GENEVE, PARIS VAUGIRARD, VALENCE ALIXAN TGV, ITALIE, FRANCFORT, STUTTGART, MADRID, LAUSANNE, BARCELONA, ZURICH |
 
 ### Régions des gares Intercités rattachées
 
@@ -194,13 +203,13 @@ _Généré par `pipeline/explore/04_gares.py`._
 | Bourgogne-Franche-Comté | 2 | NEVERS, BELFORT |
 | Centre-Val de Loire | 3 | ORLÉANS, TOURS, BOURGES |
 | Grand Est | 2 | NANCY, TROYES |
-| Hauts-de-France | 5 | CAMBRAI, ST-QUENTIN, MAUBEUGE, AMIENS, BOULOGNE-VILLE |
-| Normandie | 7 | TROUVILLE-DEAUVILLE, CAEN, GRANVILLE, ROUEN, ROUEN-RIVE-DROITE, LE HAVRE, CHERBOURG |
-| Nouvelle-Aquitaine | 5 | LIMOGES, BAYONNE, HENDAYE, BORDEAUX-ST-JEAN, BRIVE |
-| Occitanie | 11 | TOULOUSE-MATABIAU, TOULOUSE, TARBES, ALBI, BÉZIERS, LATOUR-DE-CAROL, CAHORS, CERBERE, LOURDES, NÎMES, RODEZ |
+| Hauts-de-France | 5 | MAUBEUGE, CAMBRAI, ST-QUENTIN, AMIENS, BOULOGNE-VILLE |
+| Normandie | 7 | TROUVILLE-DEAUVILLE, ROUEN-RIVE-DROITE, CAEN, GRANVILLE, ROUEN, LE HAVRE, CHERBOURG |
+| Nouvelle-Aquitaine | 5 | LIMOGES, BORDEAUX-ST-JEAN, BRIVE, BAYONNE, HENDAYE |
+| Occitanie | 11 | TOULOUSE-MATABIAU, TOULOUSE, ALBI, BÉZIERS, LATOUR-DE-CAROL, TARBES, CAHORS, CERBERE, LOURDES, NÎMES, RODEZ |
 | Pays de la Loire | 1 | NANTES |
 | Provence-Alpes-Côte d'Azur | 3 | BRIANÇON, MARSEILLE-ST-CHARLES, NICE-VILLE |
-| Île-de-France | 5 | PARIS-NORD, PARIS-EST, PARIS-BERCY, PARIS-AUSTERLITZ, PARIS-ST-LAZARE |
+| Île-de-France | 5 | PARIS-NORD, PARIS-BERCY, PARIS-EST, PARIS-AUSTERLITZ, PARIS-ST-LAZARE |
 |  | 1 | PARIS-VAUGIRARD |
 
 ### Nombre de liaisons TGV (non orientées, 12 derniers mois) touchant chaque région
@@ -210,12 +219,12 @@ _Généré par `pipeline/explore/04_gares.py`._
 | Île-de-France | 53 |
 | Auvergne-Rhône-Alpes | 11 |
 | Provence-Alpes-Côte d'Azur | 9 |
-|  | 8 |
 | Hauts-de-France | 8 |
-| Grand Est | 6 |
+|  | 8 |
 | Bretagne | 6 |
-| Pays de la Loire | 5 |
+| Grand Est | 6 |
 | Nouvelle-Aquitaine | 5 |
+| Pays de la Loire | 5 |
 | Occitanie | 5 |
 | Bourgogne-Franche-Comté | 4 |
 | Centre-Val de Loire | 2 |
