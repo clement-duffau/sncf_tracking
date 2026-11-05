@@ -318,20 +318,19 @@ métropolitaine.
 
 Méthode : normalisation (majuscules, sans accent ni ponctuation, `ST` → `SAINT`, suffixe `VILLE` et parenthèses
 retirés), puis égalité exacte, puis « tous les mots du libellé source sont dans le nom du référentiel » (en
-privilégiant les gares de segment A).
+privilégiant les gares de segment A), et enfin une table manuelle de 2 libellés.
 
-| Source | Gares (libellés composites découpés) | Exact | Mots inclus | Non rattachées |
-|---|---|---|---|---|
-| TGV | 59 | 41 (69 %) | 8 (14 %) | 10 (17 %) |
-| Intercités | 52 | 40 (77 %) | 11 (21 %) | 1 (2 %) |
+| Source | Gares (libellés composites découpés) | Exact | Mots inclus | Manuel (UIC) | Non rattachées |
+|---|---|---|---|---|---|
+| TGV | 59 | 41 (69 %) | 8 (14 %) | 2 (3 %) | 8 (14 %) |
+| Intercités | 52 | 40 (77 %) | 11 (21 %) | 1 (2 %) | 0 |
 
-- TGV non rattachées : **8 gares étrangères ou pseudo-gares** (Barcelona, Francfort, Genève, Italie, Lausanne,
-  Madrid, Stuttgart, Zurich), plus `VALENCE ALIXAN TGV` et `PARIS VAUGIRARD`. Ces deux-là se résolvent avec la
-  « Liste des gares » de SNCF Réseau, qui donne la commune et le code UIC : `Valence-TGV` (commune d'Alixan,
-  UIC 87763029) = « Valence TGV Rhône-Alpes Sud » ; `Paris-Vaugirard` (UIC 87391102) = un des codes UIC de
-  « Paris Montparnasse ». **Toutes les gares françaises sont donc rattachables (51 sur 51 pour le TGV)**, avec une
-  table de correspondance manuelle courte.
-- Intercités : `PARIS-VAUGIRARD` se résout de la même façon.
+- Sans table manuelle, 10 gares TGV restent non rattachées : les **8 gares étrangères ou pseudo-gares** (Barcelona,
+  Francfort, Genève, Italie, Lausanne, Madrid, Stuttgart, Zurich), plus `VALENCE ALIXAN TGV` et `PARIS VAUGIRARD`.
+  Ces deux-là se résolvent avec la « Liste des gares » de SNCF Réseau, qui donne la commune et le code UIC :
+  `Valence-TGV` (commune d'Alixan, UIC 87763029) = « Valence TGV Rhône-Alpes Sud » ; `Paris-Vaugirard`
+  (UIC 87391102) = un des codes UIC de « Paris Montparnasse ». **Toutes les gares françaises sont donc rattachées
+  (51 sur 51 pour le TGV, 52 sur 52 pour Intercités)**, avec une table manuelle de 2 libellés (3 lignes).
 - **Ambiguïtés à trancher à la main**, car la ville a plusieurs grandes gares : `LILLE` (Europe ou Flandres : les
   TGV Paris – Lille partent généralement de Lille Flandres, les TGV vers le sud de Lille Europe ; les données ne le
   disent pas), `MONTPELLIER` (Saint-Roch ou Sud de France), `NIMES` (centre ou Pont du Gard), `LYON` dans le jeu

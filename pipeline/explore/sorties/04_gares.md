@@ -22,11 +22,12 @@ _Généré par `pipeline/explore/04_gares.py`._
 | source | methode | gares | pct |
 |---|---|---|---|
 | Intercités | exact | 40 | 76.9 |
+| Intercités | manuel (UIC) | 1 | 1.9 |
 | Intercités | mots inclus | 11 | 21.2 |
-| Intercités | non rattaché | 1 | 1.9 |
 | TGV | exact | 41 | 69.5 |
+| TGV | manuel (UIC) | 2 | 3.4 |
 | TGV | mots inclus | 8 | 13.6 |
-| TGV | non rattaché | 10 | 16.9 |
+| TGV | non rattaché | 8 | 13.6 |
 
 ### Correspondances obtenues par « mots inclus » (à valider à la main)
 
@@ -56,16 +57,13 @@ _Généré par `pipeline/explore/04_gares.py`._
 
 | source | morceau |
 |---|---|
-| Intercités | PARIS-VAUGIRARD |
 | TGV | BARCELONA |
 | TGV | FRANCFORT |
 | TGV | GENEVE |
 | TGV | ITALIE |
 | TGV | LAUSANNE |
 | TGV | MADRID |
-| TGV | PARIS VAUGIRARD |
 | TGV | STUTTGART |
-| TGV | VALENCE ALIXAN TGV |
 | TGV | ZURICH |
 
 ### Villes ayant plusieurs gares de segment A dans le référentiel (ambiguïté possible du libellé source)
@@ -182,18 +180,18 @@ _Généré par `pipeline/explore/04_gares.py`._
 
 | region | gares | liste |
 |---|---|---|
-| Auvergne-Rhône-Alpes | 6 | ANNECY, CHAMBERY CHALLES LES EAUX, GRENOBLE, BELLEGARDE (AIN), LYON PART DIEU, SAINT ETIENNE CHATEAUCREUX |
-| Bourgogne-Franche-Comté | 4 | BESANCON FRANCHE COMTE TGV, DIJON VILLE, MACON LOCHE, LE CREUSOT MONTCEAU MONTCHANIN |
-| Bretagne | 5 | QUIMPER, RENNES, BREST, ST MALO, VANNES |
-| Centre-Val de Loire | 2 | TOURS, ST PIERRE DES CORPS |
-| Grand Est | 5 | REIMS, STRASBOURG, METZ, NANCY, MULHOUSE VILLE |
-| Hauts-de-France | 5 | ARRAS, TOURCOING, LILLE, DOUAI, DUNKERQUE |
+| Auvergne-Rhône-Alpes | 7 | LYON PART DIEU, SAINT ETIENNE CHATEAUCREUX, ANNECY, CHAMBERY CHALLES LES EAUX, GRENOBLE, VALENCE ALIXAN TGV, BELLEGARDE (AIN) |
+| Bourgogne-Franche-Comté | 4 | MACON LOCHE, BESANCON FRANCHE COMTE TGV, DIJON VILLE, LE CREUSOT MONTCEAU MONTCHANIN |
+| Bretagne | 5 | QUIMPER, BREST, ST MALO, VANNES, RENNES |
+| Centre-Val de Loire | 2 | ST PIERRE DES CORPS, TOURS |
+| Grand Est | 5 | MULHOUSE VILLE, REIMS, STRASBOURG, METZ, NANCY |
+| Hauts-de-France | 5 | ARRAS, TOURCOING, LILLE, DUNKERQUE, DOUAI |
 | Nouvelle-Aquitaine | 4 | BORDEAUX ST JEAN, LA ROCHELLE VILLE, POITIERS, ANGOULEME |
-| Occitanie | 4 | NIMES, TOULOUSE MATABIAU, PERPIGNAN, MONTPELLIER |
-| Pays de la Loire | 4 | ANGERS SAINT LAUD, LAVAL, NANTES, LE MANS |
-| Provence-Alpes-Côte d'Azur | 5 | AIX EN PROVENCE TGV, MARSEILLE ST CHARLES, AVIGNON TGV, NICE VILLE, TOULON |
-| Île-de-France | 5 | PARIS MONTPARNASSE, MARNE LA VALLEE, PARIS NORD, PARIS LYON, PARIS EST |
-|  | 10 | GENEVE, PARIS VAUGIRARD, VALENCE ALIXAN TGV, ITALIE, FRANCFORT, STUTTGART, MADRID, LAUSANNE, BARCELONA, ZURICH |
+| Occitanie | 4 | PERPIGNAN, MONTPELLIER, NIMES, TOULOUSE MATABIAU |
+| Pays de la Loire | 4 | ANGERS SAINT LAUD, LE MANS, LAVAL, NANTES |
+| Provence-Alpes-Côte d'Azur | 5 | AVIGNON TGV, NICE VILLE, AIX EN PROVENCE TGV, MARSEILLE ST CHARLES, TOULON |
+| Île-de-France | 6 | MARNE LA VALLEE, PARIS LYON, PARIS NORD, PARIS VAUGIRARD, PARIS MONTPARNASSE, PARIS EST |
+|  | 8 | ITALIE, FRANCFORT, BARCELONA, ZURICH, GENEVE, STUTTGART, MADRID, LAUSANNE |
 
 ### Régions des gares Intercités rattachées
 
@@ -203,29 +201,28 @@ _Généré par `pipeline/explore/04_gares.py`._
 | Bourgogne-Franche-Comté | 2 | NEVERS, BELFORT |
 | Centre-Val de Loire | 3 | ORLÉANS, TOURS, BOURGES |
 | Grand Est | 2 | NANCY, TROYES |
-| Hauts-de-France | 5 | MAUBEUGE, CAMBRAI, ST-QUENTIN, AMIENS, BOULOGNE-VILLE |
-| Normandie | 7 | TROUVILLE-DEAUVILLE, ROUEN-RIVE-DROITE, CAEN, GRANVILLE, ROUEN, LE HAVRE, CHERBOURG |
-| Nouvelle-Aquitaine | 5 | LIMOGES, BORDEAUX-ST-JEAN, BRIVE, BAYONNE, HENDAYE |
-| Occitanie | 11 | TOULOUSE-MATABIAU, TOULOUSE, ALBI, BÉZIERS, LATOUR-DE-CAROL, TARBES, CAHORS, CERBERE, LOURDES, NÎMES, RODEZ |
+| Hauts-de-France | 5 | CAMBRAI, ST-QUENTIN, MAUBEUGE, AMIENS, BOULOGNE-VILLE |
+| Normandie | 7 | TROUVILLE-DEAUVILLE, CAEN, GRANVILLE, ROUEN, ROUEN-RIVE-DROITE, LE HAVRE, CHERBOURG |
+| Nouvelle-Aquitaine | 5 | LIMOGES, BAYONNE, HENDAYE, BORDEAUX-ST-JEAN, BRIVE |
+| Occitanie | 11 | TOULOUSE-MATABIAU, TOULOUSE, TARBES, ALBI, BÉZIERS, LATOUR-DE-CAROL, CAHORS, CERBERE, LOURDES, NÎMES, RODEZ |
 | Pays de la Loire | 1 | NANTES |
 | Provence-Alpes-Côte d'Azur | 3 | BRIANÇON, MARSEILLE-ST-CHARLES, NICE-VILLE |
-| Île-de-France | 5 | PARIS-NORD, PARIS-BERCY, PARIS-EST, PARIS-AUSTERLITZ, PARIS-ST-LAZARE |
-|  | 1 | PARIS-VAUGIRARD |
+| Île-de-France | 6 | PARIS-NORD, PARIS-EST, PARIS-VAUGIRARD, PARIS-BERCY, PARIS-AUSTERLITZ, PARIS-ST-LAZARE |
 
 ### Nombre de liaisons TGV (non orientées, 12 derniers mois) touchant chaque région
 
 | region | liaisons |
 |---|---|
 | Île-de-France | 53 |
-| Auvergne-Rhône-Alpes | 11 |
+| Auvergne-Rhône-Alpes | 12 |
 | Provence-Alpes-Côte d'Azur | 9 |
 | Hauts-de-France | 8 |
-|  | 8 |
-| Bretagne | 6 |
+|  | 7 |
 | Grand Est | 6 |
-| Nouvelle-Aquitaine | 5 |
-| Pays de la Loire | 5 |
+| Bretagne | 6 |
 | Occitanie | 5 |
+| Pays de la Loire | 5 |
+| Nouvelle-Aquitaine | 5 |
 | Bourgogne-Franche-Comté | 4 |
 | Centre-Val de Loire | 2 |
 

@@ -72,10 +72,20 @@ select distinct 'Intercités', unnest(string_split(g, '/')) from (select depart 
 con.sql(f"""create or replace table src2 as
 select *, regexp_replace({norm.format(x="regexp_replace(morceau, '\\(.*\\)', '')")}, ' VILLE$', '') morceau_norm from src""")
 
+# Correspondances manuelles, justifiées par les codes UIC de « Liste des gares » (voir la dernière section)
+MANUEL = {"VALENCE ALIXAN TGV": "Valence TGV Rhône-Alpes Sud", "PARIS VAUGIRARD": "Paris Montparnasse",
+          "PARIS-VAUGIRARD": "Paris Montparnasse"}
+con.sql("create or replace table manuel (morceau varchar, nom varchar)")
+for k, v in MANUEL.items():
+    con.execute("insert into manuel values (?, ?)", [k, v])
+
 con.sql("""
 create or replace table corresp as
 with exact as (
-  select s.*, r.nom, r.dep, 'exact' methode, 1.0 score from src2 s join ref r on r.nom_norm = s.morceau_norm),
+  select s.*, r.nom, r.dep, 'manuel (UIC)' methode, 1.0 score from src2 s join manuel m using (morceau) join ref r on r.nom = m.nom
+  union all
+  select s.*, r.nom, r.dep, 'exact' methode, 1.0 score from src2 s join ref r on r.nom_norm = s.morceau_norm
+  where s.morceau not in (select morceau from manuel)),
 inclus as (
   select s.*, r.nom, r.dep, 'mots inclus' methode, jaro_winkler_similarity(s.morceau_norm, r.nom_norm) score,
     row_number() over (partition by s.source, s.morceau
