@@ -1,7 +1,6 @@
 name: CI
 
-# Tests du pipeline à chaque push (hors main) et sur les pull requests.
-# Le build du site et le déploiement GitHub Pages viendront à l'étape 2 (deploy.yml).
+# Tests du pipeline et du site à chaque push (hors main) et sur les pull requests.
 on:
   push:
     branches-ignore: [main]
@@ -19,3 +18,15 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Tests du pipeline (mini-jeu synthétique, sans réseau)
         run: python -m pytest -q tests
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - name: Vérification, tests et build du site
+        working-directory: site
+        run: |
+          npm ci
+          npm run check
+          npm test
+          npm run build
