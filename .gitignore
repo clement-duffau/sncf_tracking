@@ -1,0 +1,12 @@
+# Données brutes téléchargées (régénérables via pipeline/download.py)
+data/raw/
+# Bases DuckDB locales
+*.duckdb
+*.duckdb.wal
+# Python
+__pycache__/
+.venv/
+*.pyc
+# Node / front (à venir)
+node_modules/
+dist/
