@@ -337,8 +337,9 @@ privilégiant les gares de segment A).
   disent pas), `MONTPELLIER` (Saint-Roch ou Sud de France), `NIMES` (centre ou Pont du Gard), `LYON` dans le jeu
   Intercités (le script a choisi Perrache par défaut, sans justification). **La région n'en dépend pas** ; seule la
   position sur une éventuelle carte en dépend.
-- Répartition des 61 liaisons TGV actuelles : 53 touchent l'Île-de-France ; 13 touchent une gare étrangère ;
-  Auvergne-Rhône-Alpes 10, Hauts-de-France 8, PACA 8, Bretagne 6, etc.
+- Répartition des 61 liaisons TGV actuelles (→ 04, Valence TGV ajoutée à la main) : 53 touchent l'Île-de-France ;
+  **7 touchent une gare étrangère** (Barcelone, Francfort, Genève, « Italie », Lausanne, Stuttgart, Zurich) ;
+  Auvergne-Rhône-Alpes 12, Provence-Alpes-Côte d'Azur 9, Hauts-de-France 8, Grand Est 6, Bretagne 6, etc.
 
 ---
 
@@ -389,7 +390,7 @@ en chute de plus de 20 % sur un an), mais elle mélange grèves, COVID et travau
 | Classement des liaisons Intercités | **Faisable** | 16 liaisons non orientées actuelles, 149 mois ; libellés à normaliser, doublons à sommer |
 | Classement commun TGV + Intercités | **Partiellement faisable** | Même seuil de retard, mais annulations non comparables et pas de gravité Intercités : seulement sur la régularité, ou avec un avertissement |
 | Filtre par type de train | **Faisable** | |
-| Filtre par région | **Faisable** | Toutes les gares françaises rattachées (2 par table manuelle) ; une liaison appartient aux régions de ses deux extrémités ; 13 liaisons TGV ont une extrémité étrangère (filtre « International ») |
+| Filtre par région | **Faisable** | Toutes les gares françaises rattachées (2 par table manuelle) ; une liaison appartient aux régions de ses deux extrémités ; 7 liaisons TGV ont une extrémité étrangère (filtre « International ») |
 | Filtre par période (12 mois glissants, année, tout, mois précis) | **Faisable** | Données mensuelles ; décalage de publication d'1 mois (TGV) à 2 mois ou plus (Intercités) |
 | Fiche liaison : score, historique | **Faisable** | Séries mensuelles par sens |
 | Fiche liaison : causes de retard | **Partiellement faisable** | TGV seulement ; 80 liaisons-mois sans cause (surtout l'international en 2018) ; **rupture de nomenclature en mai 2026** |
