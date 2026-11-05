@@ -161,6 +161,15 @@ select year(date) annee,
   round(sum(prct_cause_gestion_gare * nb_train_retard_arrivee) / sum(nb_train_retard_arrivee), 1) gare,
   round(sum(prct_cause_prise_en_charge_voyageurs * nb_train_retard_arrivee) / sum(nb_train_retard_arrivee), 1) voyageurs
 from t where somme_causes > 0 group by 1 order by 1""")
+r.table("Répartition mensuelle des causes depuis juin 2025 (rupture visible en mai 2026)", """
+select date,
+  round(sum(prct_cause_externe * nb_train_retard_arrivee) / sum(nb_train_retard_arrivee), 1) externe,
+  round(sum(prct_cause_infra * nb_train_retard_arrivee) / sum(nb_train_retard_arrivee), 1) infra,
+  round(sum(prct_cause_gestion_trafic * nb_train_retard_arrivee) / sum(nb_train_retard_arrivee), 1) gestion_trafic,
+  round(sum(prct_cause_materiel_roulant * nb_train_retard_arrivee) / sum(nb_train_retard_arrivee), 1) materiel,
+  round(sum(prct_cause_gestion_gare * nb_train_retard_arrivee) / sum(nb_train_retard_arrivee), 1) gare,
+  round(sum(prct_cause_prise_en_charge_voyageurs * nb_train_retard_arrivee) / sum(nb_train_retard_arrivee), 1) voyageurs
+from t where somme_causes > 0 and date >= '2025-06-01' group by 1 order by 1""")
 r.table("Granularité des pourcentages de causes (nb de valeurs distinctes, part des valeurs entières)", """
 select count(distinct prct_cause_externe) distinctes, round(100 * avg((prct_cause_externe = round(prct_cause_externe))::int), 1) pct_entieres from t""")
 

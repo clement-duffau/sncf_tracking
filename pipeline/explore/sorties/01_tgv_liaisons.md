@@ -78,19 +78,19 @@ _Généré par `pipeline/explore/01_tgv_liaisons.py`._
 | service | gare_depart | gare_arrivee | nb_mois | premier | dernier |
 |---|---|---|---|---|---|
 | International | BARCELONA | PARIS LYON | 93 | 2018-01-01 | 2025-09-01 |
-| National | BORDEAUX ST JEAN | TOURCOING | 103 | 2018-01-01 | 2026-09-01 |
 | National | BORDEAUX ST JEAN | PARIS VAUGIRARD | 12 | 2018-01-01 | 2018-12-01 |
+| National | BORDEAUX ST JEAN | TOURCOING | 103 | 2018-01-01 | 2026-09-01 |
 | International | ITALIE | PARIS LYON | 101 | 2018-01-01 | 2026-09-01 |
 | International | MADRID | MARSEILLE ST CHARLES | 45 | 2018-01-01 | 2022-12-01 |
 | National | MARSEILLE ST CHARLES | TOURCOING | 104 | 2018-01-01 | 2026-09-01 |
 | International | MARSEILLE ST CHARLES | MADRID | 45 | 2018-01-01 | 2022-12-01 |
 | National | NANTES | PARIS VAUGIRARD | 12 | 2018-01-01 | 2018-12-01 |
+| International | PARIS LYON | ITALIE | 101 | 2018-01-01 | 2026-09-01 |
 | International | PARIS LYON | ZURICH | 104 | 2018-01-01 | 2026-09-01 |
 | International | PARIS LYON | BARCELONA | 93 | 2018-01-01 | 2025-09-01 |
-| International | PARIS LYON | ITALIE | 101 | 2018-01-01 | 2026-09-01 |
 | National | PARIS VAUGIRARD | NANTES | 12 | 2018-01-01 | 2018-12-01 |
-| National | PARIS VAUGIRARD | BORDEAUX ST JEAN | 12 | 2018-01-01 | 2018-12-01 |
 | National | PARIS VAUGIRARD | RENNES | 12 | 2018-01-01 | 2018-12-01 |
+| National | PARIS VAUGIRARD | BORDEAUX ST JEAN | 12 | 2018-01-01 | 2018-12-01 |
 | National | RENNES | PARIS VAUGIRARD | 12 | 2018-01-01 | 2018-12-01 |
 | National | TOURCOING | BORDEAUX ST JEAN | 103 | 2018-01-01 | 2026-09-01 |
 | National | TOURCOING | MARSEILLE ST CHARLES | 13 | 2018-01-01 | 2022-08-01 |
@@ -103,11 +103,11 @@ _Généré par `pipeline/explore/01_tgv_liaisons.py`._
 | International | MARSEILLE ST CHARLES | LYON PART DIEU | 3 | 2025-07-01 | 2025-09-01 |
 | International | MULHOUSE VILLE | PARIS LYON | 3 | 2025-07-01 | 2025-09-01 |
 | International | PARIS EST | STRASBOURG | 3 | 2025-07-01 | 2025-09-01 |
-| International | PARIS LYON | DIJON VILLE | 3 | 2025-07-01 | 2025-09-01 |
-| International | PARIS LYON | CHAMBERY CHALLES LES EAUX | 3 | 2025-07-01 | 2025-09-01 |
-| International | PARIS LYON | BELLEGARDE (AIN) | 3 | 2025-07-01 | 2025-09-01 |
 | International | PARIS LYON | MACON LOCHE | 3 | 2025-07-01 | 2025-09-01 |
+| International | PARIS LYON | DIJON VILLE | 3 | 2025-07-01 | 2025-09-01 |
 | International | PARIS LYON | MULHOUSE VILLE | 3 | 2025-07-01 | 2025-09-01 |
+| International | PARIS LYON | BELLEGARDE (AIN) | 3 | 2025-07-01 | 2025-09-01 |
+| International | PARIS LYON | CHAMBERY CHALLES LES EAUX | 3 | 2025-07-01 | 2025-09-01 |
 | International | STRASBOURG | PARIS EST | 3 | 2025-07-01 | 2025-09-01 |
 | National | BARCELONA | PARIS LYON | 12 | 2025-10-01 | 2026-09-01 |
 | National | PARIS LYON | BARCELONA | 12 | 2025-10-01 | 2026-09-01 |
@@ -430,6 +430,27 @@ Les six colonnes `prct_cause_*` sont des pourcentages **des trains en retard à 
 | 2025 | 19.8 | 21 | 24.5 | 17.7 | 9 | 8 |
 | 2026 | 29.7 | 10.8 | 11.4 | 20.5 | 19.1 | 8.4 |
 
+### Répartition mensuelle des causes depuis juin 2025 (rupture visible en mai 2026)
+
+| date | externe | infra | gestion_trafic | materiel | gare | voyageurs |
+|---|---|---|---|---|---|---|
+| 2025-06-01 | 15.7 | 28.4 | 21.5 | 16.6 | 8.9 | 8.8 |
+| 2025-07-01 | 19 | 20.1 | 25.8 | 18.6 | 9.1 | 7.4 |
+| 2025-08-01 | 29.9 | 13.9 | 20.6 | 18 | 9.4 | 8.1 |
+| 2025-09-01 | 22.2 | 26.9 | 20.9 | 16.3 | 7.2 | 6.5 |
+| 2025-10-01 | 29 | 15.5 | 25.6 | 14.5 | 8.3 | 7.2 |
+| 2025-11-01 | 19.5 | 16 | 26.7 | 20 | 11.3 | 6.4 |
+| 2025-12-01 | 13 | 15 | 29.9 | 22.8 | 10.9 | 8.5 |
+| 2026-01-01 | 32.6 | 16.6 | 21.9 | 16.5 | 7.7 | 4.7 |
+| 2026-02-01 | 27.8 | 18.7 | 22.1 | 16.9 | 8 | 6.5 |
+| 2026-03-01 | 23.8 | 18.7 | 25.8 | 18.1 | 7.5 | 6.2 |
+| 2026-04-01 | 21.2 | 21.7 | 19.6 | 19.8 | 12 | 5.8 |
+| 2026-05-01 | 34 | 5.9 | 5.7 | 24.7 | 20.9 | 8.8 |
+| 2026-06-01 | 26.9 | 5.9 | 4.8 | 21.9 | 31.6 | 8.6 |
+| 2026-07-01 | 34.7 | 5.8 | 3.6 | 19 | 27.4 | 9.6 |
+| 2026-08-01 | 30.4 | 5.6 | 5 | 23.8 | 22.9 | 12.4 |
+| 2026-09-01 | 31 | 6.8 | 4.5 | 23.3 | 22.8 | 11.6 |
+
 ### Granularité des pourcentages de causes (nb de valeurs distinctes, part des valeurs entières)
 
 | distinctes | pct_entieres |
@@ -583,11 +604,11 @@ La régularité « globale » publiée n'est pas la moyenne des liaisons (un tra
 | MARSEILLE ST CHARLES | TOURCOING | 22 |
 | BORDEAUX ST JEAN | TOURCOING | 26 |
 | TOURCOING | BORDEAUX ST JEAN | 27 |
-| STRASBOURG | NANTES | 57 |
 | NANTES | STRASBOURG | 57 |
+| STRASBOURG | NANTES | 57 |
 | BARCELONA | PARIS LYON | 66 |
 | PARIS LYON | BARCELONA | 67 |
-| PARIS LYON | ITALIE | 76 |
 | ITALIE | PARIS LYON | 76 |
+| PARIS LYON | ITALIE | 76 |
 | LYON PART DIEU | RENNES | 90 |
 
