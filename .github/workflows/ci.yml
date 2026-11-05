@@ -1,0 +1,21 @@
+name: CI
+
+# Tests du pipeline à chaque push (hors main) et sur les pull requests.
+# Le build du site et le déploiement GitHub Pages viendront à l'étape 2 (deploy.yml).
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Tests du pipeline (mini-jeu synthétique, sans réseau)
+        run: python -m pytest -q tests
