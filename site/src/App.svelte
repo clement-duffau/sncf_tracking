@@ -5,6 +5,7 @@
   import { ROUTES, lien, route } from './lib/router.svelte'
   import type { Meta } from './lib/types'
   import Classement from './pages/Classement.svelte'
+  import Liaison from './pages/Liaison.svelte'
   import Methodologie from './pages/Methodologie.svelte'
 
   let meta = $state<Meta | null>(null)
@@ -18,6 +19,7 @@
 
   const titres: Record<string, string> = { '': 'Le classement des liaisons ferroviaires', methodologie: 'Méthodologie et sources' }
   $effect(() => {
+    if (route.path === 'liaison') return // la fiche pose son propre titre
     document.title = route.path ? `${titres[route.path]} – Le classement des liaisons ferroviaires` : titres['']
   })
 </script>
@@ -32,7 +34,7 @@
     <p class="accroche">La fiabilité des TGV et Intercités, liaison par liaison, d'après les chiffres publiés par la SNCF.</p>
     <nav aria-label="Pages">
       {#each ROUTES as r (r.path)}
-        <a href={lien(r.path)} aria-current={route.path === r.path ? 'page' : undefined}>{r.label}</a>
+        <a href={lien(r.path)} aria-current={route.path === r.path || (r.path === '' && route.path === 'liaison') ? 'page' : undefined}>{r.label}</a>
       {/each}
     </nav>
   </div>
@@ -41,6 +43,8 @@
 <main id="contenu" tabindex="-1" class="cadre">
   {#if route.path === 'methodologie'}
     <Methodologie />
+  {:else if route.path === 'liaison'}
+    <Liaison />
   {:else}
     <Classement />
   {/if}

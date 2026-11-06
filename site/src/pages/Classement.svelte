@@ -7,7 +7,7 @@
   import Sparkline from '../lib/charts/Sparkline.svelte'
   import { chargerClassement, chargerMeta } from '../lib/data'
   import { duree, nombre, pct, periodeTexte, points } from '../lib/format'
-  import { lien, route, setParams } from '../lib/router.svelte'
+  import { lien, lienLiaison, route, setParams } from '../lib/router.svelte'
   import type { Classement, Meta, TypeTrain } from '../lib/types'
 
   let meta = $state<Meta | null>(null)
@@ -191,7 +191,7 @@
                 {/if}
               </td>
               <th scope="row" class="c-liaison">
-                <span class="nom">{l.liaison.a.nom}<span class="tiret">{'\u00a0– '}</span>{l.liaison.b.nom}</span>
+                <a class="nom" href={lienLiaison(l.liaison.id, f.periode !== '12m' ? { periode: f.periode } : {})}>{l.liaison.a.nom}<span class="tiret">{'\u00a0– '}</span>{l.liaison.b.nom}</a>
                 <span class="details">
                   <span class="type">{l.liaison.type}</span>
                   {#if l.liaison.duree}<span>{duree(l.liaison.duree)}</span>{/if}
@@ -283,7 +283,8 @@
   .rang { font-family: var(--police-etroite); font-weight: 700; font-size: 1.5rem; line-height: 1; }
   .coude { color: var(--discret); margin-left: 2px; cursor: help; }
 
-  .nom { display: block; font-family: var(--police-etroite); font-weight: 600; font-size: 1.125rem; line-height: 1.2; }
+  .nom { display: block; font-family: var(--police-etroite); font-weight: 600; font-size: 1.125rem; line-height: 1.2; color: var(--encre); text-decoration: none; }
+  .nom:hover { text-decoration: underline; }
   .tiret { color: var(--discret); }
   .details { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 0.875rem; color: var(--discret); margin-top: 2px; }
   .type { border: 1px solid var(--rail-fort); border-radius: 3px; padding: 0 5px; font-size: 0.8125rem; color: var(--encre-2); }
