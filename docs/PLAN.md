@@ -27,6 +27,11 @@ calculés sur les données du 5 novembre 2026.
 - **Mois anormaux non annotés** (signalés à chaque build, faute de source fiable sur leur cause) : Intercités
   décembre 2017 (programmés −20,6 % à périmètre constant) et TGV juillet 2018 (5,4 % d'annulations, fin de la grève
   du printemps ?). À compléter dans `data/events.yaml` si une source est trouvée.
+- **Étape 3 (fiche liaison)** : les causes sont montrées en barres empilées par année (plutôt qu'en aires), l'année
+  2026 coupée en deux à la rupture de nomenclature ; la saisonnalité et « Mon trajet » condensé sont réunis dans
+  un seul graphique (probabilité d'arriver à l'heure pour chaque mois, avec la fourchette d'une année sur l'autre).
+  Les couleurs des graphiques sont validées par script (daltonisme, contrastes) dans les deux thèmes ; les trois
+  niveaux de retard forment une rampe ordinale d'une seule teinte.
 - **Question 8 tranchée** : code sous licence MIT, site à l'URL par défaut https://clement-duffau.github.io/sncf_tracking/.
 
 ## Sommaire

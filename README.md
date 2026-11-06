@@ -13,7 +13,7 @@ globales. Publié sur GitHub Pages, sans backend : **https://clement-duffau.gith
 | Phase 2 | Plan : [`docs/PLAN.md`](docs/PLAN.md) | validé |
 | 1 | Pipeline de production, tests, `data/events.yaml` | fait |
 | 2 | Site : classement, filtres, méthodologie ; déploiement Pages | fait |
-| 3 | Fiche liaison | à faire |
+| 3 | Fiche liaison | fait |
 | 4 | Mon trajet | à faire |
 | 5 | Tendances, Statistiques, périodes libres | à faire |
 | 6 | Régions TER (v2), finitions | à faire |
@@ -60,7 +60,7 @@ coupée) dans `data/raw/`, vérifie leur format, calcule les scores, tendances e
 |---|---|
 | `npm run dev` | serveur de développement (lit `site/public/data/`, produit par le pipeline) |
 | `npm run check` | vérification des types (svelte-check) |
-| `npm test` | tests unitaires (Vitest : classement, filtres, formats) |
+| `npm test` | tests unitaires (Vitest : classement, filtres, formats, fiche, égalité du score avec le pipeline) |
 | `npm run build` | site statique dans `site/dist/` |
 
 Un build **échoue avec un message explicite** si une source change de format (colonne absente ou de type
@@ -92,9 +92,12 @@ data/
   sources.lock.json       date de publication et volume de chaque jeu au dernier build (versionné)
   raw/                    données téléchargées (non versionné)
 site/                     Vite + Svelte 5 + TypeScript, sans backend
-  src/pages/              Classement, Méthodologie et sources
+  src/pages/              Classement, fiche liaison, Méthodologie et sources
   src/lib/classement.ts   lignes d'une période, filtres, tris, « coude à coude » (testé par Vitest)
-  src/lib/charts/         barre de score « voie », courbe des 12 derniers mois (SVG faits main)
+  src/lib/fiche.ts        fiche : fusion des sens, issues et causes par année, export CSV (testé par Vitest)
+  src/lib/score.ts        score V2, même formule que le pipeline (vérifié par Vitest sur les valeurs exportées)
+  src/lib/charts/         SVG faits main : barre de score « voie », courbes, barres segmentées, mois de l'année
+  src/lib/carte/          petite carte de situation (contour IGN Admin Express simplifié, Licence Ouverte)
   src/lib/router.svelte.ts routeur par hash ; filtres reflétés dans l'URL (#/?type=TGV&periode=2025&region=Bretagne)
 tests/                    pytest
 docs/                     DATA.md (exploration), PLAN.md (plan validé)
@@ -140,5 +143,8 @@ Données : **SNCF Voyageurs** (régularité mensuelle TGV par liaisons, par axe 
 **SNCF Gares & Connexions** (gares de voyageurs), via [ressources.data.sncf.com](https://ressources.data.sncf.com),
 sous licence [Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/1-0/). Les données dérivées
 produites par le pipeline (`site/public/data/`, dont `donnees/*.csv`) sont diffusées sous la même licence.
+
+Contour de la France de la petite carte : [france-geojson](https://github.com/gregoiredavid/france-geojson),
+d'après Admin Express (IGN), Licence Ouverte Etalab.
 
 Code : licence [MIT](LICENSE).
