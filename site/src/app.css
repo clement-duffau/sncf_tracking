@@ -18,6 +18,24 @@
   --carmin: #b3263a;
   --survol: #e6eae7;
 
+  /* Graphiques (palettes validées par le script de la skill dataviz, fond --quai) */
+  --serie: #2a78d6;           /* la liaison */
+  --reference: #8a948e;       /* l'ensemble du type de train */
+  --bande: rgba(28, 38, 50, 0.07); /* périodes annotées (grèves, COVID) */
+  /* Issue des trains : vert, rampe ordinale d'une teinte pour la gravité du retard, violet-ardoise pour l'annulation */
+  --issue-heure: #067d4d;
+  --issue-r30: #f0834e;
+  --issue-r60: #c75615;
+  --issue-r60p: #943600;
+  --issue-annule: #483e74;
+  /* Causes : six premiers emplacements de la palette catégorielle de référence, ordre fixe */
+  --cause-1: #2a78d6;
+  --cause-2: #eb6834;
+  --cause-3: #1baf7a;
+  --cause-4: #eda100;
+  --cause-5: #e87ba4;
+  --cause-6: #008300;
+
   --police: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --police-etroite: 'Barlow Semi Condensed', 'Barlow', system-ui, sans-serif;
   --gouttiere: clamp(16px, 4vw, 40px);
@@ -41,6 +59,21 @@
     --ambre-trait: #e0a43c;
     --carmin: #ee6f7f;
     --survol: #222d37;
+
+    --serie: #3987e5;
+    --reference: #6f7c88;
+    --bande: rgba(231, 235, 238, 0.07);
+    --issue-heure: #3baa73;
+    --issue-r30: #994920;
+    --issue-r60: #db703b;
+    --issue-r60p: #ffab82;
+    --issue-annule: #bcb8e2;
+    --cause-1: #3987e5;
+    --cause-2: #d95926;
+    --cause-3: #199e70;
+    --cause-4: #c98500;
+    --cause-5: #d55181;
+    --cause-6: #008300;
   }
 }
 
