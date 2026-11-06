@@ -1,4 +1,4 @@
-import type { Classement, Evenement, Meta } from './types'
+import type { Classement, Evenement, Fiche, Gare, Meta, Stats } from './types'
 
 const cache = new Map<string, Promise<unknown>>()
 
@@ -16,3 +16,6 @@ export function charger<T>(fichier: string): Promise<T> {
 export const chargerMeta = () => charger<Meta>('meta.json')
 export const chargerClassement = () => charger<Classement>('classement.json')
 export const chargerEvenements = () => charger<Evenement[]>('evenements.json')
+export const chargerStats = () => charger<Stats>('stats.json')
+export const chargerGares = () => charger<Gare[]>('gares.json')
+export const chargerFiche = (id: string) => charger<Fiche>(`liaison/${encodeURIComponent(id)}.json`)
