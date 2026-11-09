@@ -1,6 +1,6 @@
 {
   "gares_voyageurs": {
-    "data_processed": "2026-11-05T13:43:06+00:00",
+    "data_processed": "2026-11-09T13:43:12+00:00",
     "records_count": 2792
   },
   "intercites": {
@@ -11,7 +11,7 @@
   "ter": {
     "data_processed": "2026-09-10T14:06:29+00:00",
     "records_count": 2380,
-    "dernier_mois": "2026-08"
+    "dernier_mois": "2026-09"
   },
   "tgv_aqst": {
     "data_processed": "2026-10-02T10:10:31+00:00",
